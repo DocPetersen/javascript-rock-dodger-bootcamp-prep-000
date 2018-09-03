@@ -16,6 +16,7 @@ function checkCollision(rock) {
   
   if (top > 360) {
     const dodgerLeftEdge = positionToInteger(DODGER.style.left)
+<<<<<<< HEAD
     const dodgerRightEdge = dodgerLeftEdge + 40
     const rockLeftEdge = positionToInteger(rock.style.left)
     const rockRightEdge = rockLeftEdge + 20
@@ -24,6 +25,16 @@ function checkCollision(rock) {
           (rockLeftEdge <= dodgerLeftEdge && rockRightEdge >= dodgerLeftEdge) || 
           (rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge) ||
           (rockLeftEdge <= dodgerRightEdge && rockRightEdge >= dodgerRightEdge)
+=======
+    const dodgerRightEdge = dodgerLeftEdge + 40;
+    const rockLeftEdge = positionToInteger(rock.style.left)
+    const rockRightEdge = rockLeftEdge + 20;
+
+    if (
+            (rockLeftEdge <= dodgerLeftEdge && rockRightEdge >= dodgerLeftEdge) || 
+            (rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge) ||
+            (rockLeftEdge <= dodgerRightEdge && rockRightEdge >= dodgerRightEdge)
+>>>>>>> 13dbc1c2a1396b7bc2c5ea9567f0090adb4eb296
           ) {
       return true
     }
@@ -49,6 +60,7 @@ function createRock(x) {
       return (endGame())
     }
  
+<<<<<<< HEAD
     if (top < GAME_HEIGHT) {window.requestAnimationFrame(moveRock)}
     
     else {rock.remove()}
@@ -66,20 +78,50 @@ function endGame() {
   START.innerHTML = 'Play again?'
   START.style.display = 'inline'
   return alert('YOU LOSE!')
+=======
+  if (top < GAME_HEIGHT) {window.requestAnimationFrame(moveRock)}
+    
+  else {rock.remove()}
+  }
+
+  ROCKS.push(rock)
+
+  return rock
+}
+
+function endGame() {
+   window.requestAnimationFrame(function() {
+    const left = positionToInteger(DODGER.style.left)
+
+   if (left < 360) {
+    DODGER.style.left = `${left + 4}px`
+  }
+})
+>>>>>>> 13dbc1c2a1396b7bc2c5ea9567f0090adb4eb296
 }
 
 function moveDodger(e) {
    if ([LEFT_ARROW, RIGHT_ARROW].indexOf(e.which) > -1) {
+<<<<<<< HEAD
      e.preventDefault()
      e.stopPropagation()
   }
    if (e.which === LEFT_ARROW) {moveDodgerLeft()}
    else if (e.which === RIGHT_ARROW) {moveDodgerRight()}
+=======
+  }
+   if (e.which === LEFT_ARROW) {moveDodgerLeft();}
+   else if (e.which === RIGHT_ARROW) {moveDodgerRight();}
+>>>>>>> 13dbc1c2a1396b7bc2c5ea9567f0090adb4eb296
 }
 
 function moveDodgerLeft() {
   window.requestAnimationFrame(function() {
+<<<<<<< HEAD
   const left = positionToInteger(DODGER.style.left)
+=======
+   const left = positionToInteger(DODGER.style.left)
+>>>>>>> 13dbc1c2a1396b7bc2c5ea9567f0090adb4eb296
 
   if (left > 0) {
     DODGER.style.left = `${left - 4}px`
@@ -95,7 +137,10 @@ function moveDodgerRight() {
     DODGER.style.left = `${left + 4}px`
   }
 })
+<<<<<<< HEAD
 }
+=======
+>>>>>>> 13dbc1c2a1396b7bc2c5ea9567f0090adb4eb296
 
 function positionToInteger(p) {
   return parseInt(p.split('px')[0]) || 0
